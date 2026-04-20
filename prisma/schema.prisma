@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Registration {
+  id         Int      @id @default(autoincrement())
+  name_en    String
+  name_kh    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  slug       String   @unique @default(uuid())
+
+  @@map("registrations")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  slug       String   @unique @default(uuid())
+  fullname   String
+
+  @@map("users")
+}

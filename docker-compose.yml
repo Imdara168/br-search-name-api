@@ -16,5 +16,24 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: br-search-name-api
+    restart: unless-stopped
+    environment:
+      PORT: 8080
+      DATABASE_URL: mysql://root:password@mysql:3306/br_search_name
+      DB_SYNCHRONIZE: "false"
+      DB_LOGGING: "false"
+      JWT_SECRET: change-this-secret
+      JWT_EXPIRES_IN: 1d
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
 volumes:
   mysql_data:

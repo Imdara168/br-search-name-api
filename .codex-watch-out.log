@@ -1,0 +1,31 @@
+
+> br-search-name-api@0.1.0 prestart:dev
+> prisma generate
+
+
+✔ Generated Prisma Client (7.7.0) to .\src\generated\prisma in 61ms
+
+
+> br-search-name-api@0.1.0 start:dev
+> nest start --watch
+
+[2J[3J[H[[90m1:27:36 PM[0m] Starting compilation in watch mode...
+
+[[90m1:27:39 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +31ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +82ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +35ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +6ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/health, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/signin, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6348  - [39m04/20/2026, 1:27:41 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +81ms[39m

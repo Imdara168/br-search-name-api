@@ -13,6 +13,16 @@ npm.cmd run start:dev
 
 Open `http://localhost:8080/health` to check the API.
 
+## Docker
+
+```bash
+docker compose up --build -d
+```
+
+This starts MySQL and the API. The API container applies Prisma migrations before starting NestJS.
+
+Open `http://localhost:8080/health` to check the containerized API.
+
 ## Environment
 
 | Variable | Default | Description |
