@@ -8,4 +8,8 @@ export class CreateRegistrationDto {
   @IsNotEmpty()
   @IsString()
   name_kh: string;
+
+  @IsNotEmpty()
+  @IsString()
+  entity_code: string;
 }

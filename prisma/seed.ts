@@ -32,14 +32,21 @@ const khmerNames = [
 function createSeedRegistrations(): Array<{
   name_en: string;
   name_kh: string;
+  entity_code: string;
 }> {
   return Array.from({ length: 50 }, (_, index) => {
     const nameIndex = index % englishNames.length;
     const sequence = String(index + 1).padStart(2, '0');
+    const leadingSegment = String(100 + index).padStart(index % 2 === 0 ? 3 : 4, '0');
+    const middleSegment = String((index % 12) + 1).padStart(2, '0');
+    const suffix = ['P', 'B', 'C'][index % 3];
+    const trailingSegment =
+      index % 5 === 0 ? `/${String((index % 9) + 1).padStart(2, '0')}` : '';
 
     return {
       name_en: `${englishNames[nameIndex]} ${sequence}`,
       name_kh: `${khmerNames[nameIndex]} ${sequence}`,
+      entity_code: `${leadingSegment}/${middleSegment}/${suffix}${trailingSegment}`,
     };
   });
 }

@@ -8,4 +8,8 @@ export class UpdateRegistrationDto {
   @IsOptional()
   @IsString()
   name_kh?: string;
+
+  @IsOptional()
+  @IsString()
+  entity_code?: string;
 }

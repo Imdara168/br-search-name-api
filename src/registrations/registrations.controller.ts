@@ -38,7 +38,18 @@ export class RegistrationsController {
 
   @Get('search-registrations')
   @UseGuards(AuthGuard)
-  async search(@Query('query') query: string) {
-    return this.registrationsService.search(query || '', true);
+  async search(
+    @Query('query') query: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+    @Query('sort') sort?: 'asc' | 'desc',
+  ) {
+    return this.registrationsService.search(
+      query || '',
+      true,
+      Number(page || '1'),
+      Number(limit || '10'),
+      sort || 'asc',
+    );
   }
 }
