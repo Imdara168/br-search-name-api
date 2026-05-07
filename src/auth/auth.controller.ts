@@ -26,8 +26,8 @@ export class AuthController {
 
   @Get('me')
   @UseGuards(AuthGuard)
-  getMe(@GetUser('fullname') fullname: string) {
-    return { fullname };
+  getMe(@GetUser('sub') userId: number) {
+    return this.authService.getMe(userId);
   }
 
   @Post('change_password')

@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { PrismaMariaDb } from '@prisma/adapter-mariadb';
 import * as bcrypt from 'bcryptjs';
 import { PrismaClient } from '../src/generated/prisma/client';
+import { USER_ROLES } from '../src/auth/constants/roles';
 
 const englishNames = [
   'Sokha Trading',
@@ -37,7 +38,10 @@ function createSeedRegistrations(): Array<{
   return Array.from({ length: 50 }, (_, index) => {
     const nameIndex = index % englishNames.length;
     const sequence = String(index + 1).padStart(2, '0');
-    const leadingSegment = String(100 + index).padStart(index % 2 === 0 ? 3 : 4, '0');
+    const leadingSegment = String(100 + index).padStart(
+      index % 2 === 0 ? 3 : 4,
+      '0',
+    );
     const middleSegment = String((index % 12) + 1).padStart(2, '0');
     const suffix = ['P', 'B', 'C'][index % 3];
     const trailingSegment =
@@ -79,15 +83,34 @@ async function main(): Promise<void> {
     update: {
       password: await bcrypt.hash('admin123', 10),
       fullname: 'Administrator',
+      role: USER_ROLES.ADMIN,
     },
     create: {
       username: 'admin',
       password: await bcrypt.hash('admin123', 10),
       fullname: 'Administrator',
+      role: USER_ROLES.ADMIN,
     },
   });
 
   console.log('Seeded admin user.');
+
+  await prisma.user.upsert({
+    where: { username: 'user' },
+    update: {
+      password: await bcrypt.hash('user123', 10),
+      fullname: 'Search Only User',
+      role: USER_ROLES.SEARCH_ONLY,
+    },
+    create: {
+      username: 'user',
+      password: await bcrypt.hash('user123', 10),
+      fullname: 'Search Only User',
+      role: USER_ROLES.SEARCH_ONLY,
+    },
+  });
+
+  console.log('Seeded search-only user.');
 
   await prisma.$disconnect();
 }

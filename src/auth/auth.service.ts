@@ -8,6 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import type { SignOptions } from 'jsonwebtoken';
 import { PrismaService } from '../prisma/prisma.service';
+import { USER_ROLES } from './constants/roles';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { SignInDto } from './dto/signin.dto';
 import { SignInResponse } from './types/signin-response.type';
@@ -52,6 +53,7 @@ export class AuthService {
         username: user.username,
         slug: user.slug,
         fullname: user.fullname,
+        role: user.role,
       },
       { expiresIn },
     );
@@ -60,6 +62,31 @@ export class AuthService {
       access_token: accessToken,
       token_type: 'Bearer',
       expires_in: String(expiresIn),
+    };
+  }
+
+  async getMe(userId: number): Promise<{
+    fullname: string;
+    role: string;
+    username: string;
+  }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        fullname: true,
+        role: true,
+        username: true,
+      },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid or expired token');
+    }
+
+    return {
+      fullname: user.fullname,
+      role: user.role || USER_ROLES.ADMIN,
+      username: user.username,
     };
   }
 

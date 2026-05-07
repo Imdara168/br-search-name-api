@@ -8,13 +8,13 @@ datasource db {
 }
 
 model Registration {
-  id         Int      @id @default(autoincrement())
-  name_en    String
-  name_kh    String
+  id          Int      @id @default(autoincrement())
+  name_en     String
+  name_kh     String
   entity_code String?
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  slug       String   @unique @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  slug        String   @unique @default(uuid())
 
   @@map("registrations")
 }
@@ -23,6 +23,7 @@ model User {
   id         Int      @id @default(autoincrement())
   username   String   @unique
   password   String
+  role       String   @default("admin")
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   slug       String   @unique @default(uuid())

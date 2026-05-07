@@ -5,6 +5,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { OptionalAuthGuard } from './guards/optional-auth.guard';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { OptionalAuthGuard } from './guards/optional-auth.guard';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AuthGuard, OptionalAuthGuard],
-  exports: [AuthGuard, OptionalAuthGuard, JwtModule],
+  providers: [AuthService, AuthGuard, OptionalAuthGuard, RolesGuard],
+  exports: [AuthGuard, OptionalAuthGuard, RolesGuard, JwtModule],
 })
 export class AuthModule {}
